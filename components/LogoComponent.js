@@ -1,14 +1,16 @@
-import { StyleSheet, Image, View } from "react-native";
+import { StyleSheet, Image, View, TouchableOpacity } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export default function LogoComponent() {
+  const navigation = useNavigation();
   return (
-    <View>
+    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
       <Image
         source={require("../assets/airbnb-logo.jpg")}
         style={styles.logo}
       />
-    </View>
+    </TouchableOpacity>
   );
 }
 

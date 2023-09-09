@@ -24,19 +24,24 @@ const AroundMeScreen = ({ navigation }) => {
   useEffect(() => {
     const askLocationPermission = async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
-      //   console.log("*****status", status);
       if (status === "granted") {
         const location = await Location.getCurrentPositionAsync();
         setCoords({
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
         });
-        setIsLoading(false);
+
+        setFinishedLoading(true);
       } else {
+        setCoords({
+          latitude: userLocation.latitude,
+          longitude: userLocation.longitude,
+        });
         setError(true);
         setFinishedLoading(true);
         // alert("Access to location was denied !");
       }
+      setIsLoading(false);
     };
 
     askLocationPermission();
@@ -45,13 +50,18 @@ const AroundMeScreen = ({ navigation }) => {
   useEffect(() => {
     const fecthLocations = async () => {
       try {
-        const response = await apiClient.get(
-          //   `/rooms/around?latitude=${coords.latitude}&longitude=${coords.longitude}`
-          `/rooms/around?latitude=${userLocation.latitude}&longitude=${userLocation.longitude}`
-        );
-        // console.log(response.data);
-        setRoomLocations(response.data);
-        setFinishedLoading(true);
+        if (error === false) {
+          const response = await apiClient.get(
+            `/rooms/around?latitude=${userLocation.latitude}&longitude=${userLocation.longitude}`
+          );
+          setRoomLocations(response.data);
+          setFinishedLoading(true);
+        } else {
+          // permission not granted -> dislay all rooms
+          const response = await apiClient.get(`/rooms`);
+          setRoomLocations(response.data);
+          setFinishedLoading(true);
+        }
       } catch (error) {
         console.log(error.response);
       }
@@ -60,16 +70,17 @@ const AroundMeScreen = ({ navigation }) => {
     if (!isLoading && coords.latitude && coords.longitude) {
       fecthLocations();
     }
-  }, [coords, isLoading]);
+  }, [coords, isLoading, error]);
 
   return !finishedLoading ? (
     <ActivityIndicator />
-  ) : error ? (
-    <View style={styles.msgContainer}>
-      <Text style={styles.msg}>Access permission to location denied</Text>
-      <Text style={styles.subMsg}> Users' locations not available</Text>
-    </View>
   ) : (
+    // error ? (
+    //   <View style={styles.msgContainer}>
+    //     <Text style={styles.msg}>Access permission to location denied</Text>
+    //     <Text style={styles.subMsg}> Users' locations not available</Text>
+    //   </View>
+    // ) :
     <MapView
       style={styles.map}
       initialRegion={{
