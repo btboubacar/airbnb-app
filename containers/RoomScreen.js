@@ -4,9 +4,7 @@ import {
   Text,
   View,
   Image,
-  FlatList,
   TouchableOpacity,
-  Platform,
 } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
