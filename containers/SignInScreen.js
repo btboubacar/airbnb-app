@@ -38,7 +38,7 @@ export default function SignUpScreen({ navigation, setToken }) {
         });
 
         // set userToken
-        setToken(response.data.token);
+        setToken(response.data.token, response.data.id);
 
         setIsSubmitting(false);
         alert("Successfully logged in !");

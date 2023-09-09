@@ -4,28 +4,30 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Platform, StyleSheet } from "react-native";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 // Screens
 import SignInScreen from "./containers/SignInScreen";
 import SignUpScreen from "./containers/SignUpScreen";
 import HomeScreen from "./containers/HomeScreen";
-import SettingsScreen from "./containers/SettingsScreen";
+import ProfileScreen from "./containers/ProfileScreen";
 import RoomScreen from "./containers/RoomScreen";
 import HeaderGoBack from "./components/HeaderGoBack";
 import LogoComponent from "./components/LogoComponent";
+import AroundMeScreen from "./containers/AroundMeScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const App = () => {
   const [userToken, setUserToken] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const setToken = async (token) => {
-    if (token) {
+  const setToken = async (token, id) => {
+    if (token && id) {
       try {
-        await AsyncStorage.setItem("userToken", token);
+        await AsyncStorage.setItem("userToken", JSON.stringify([token, id]));
       } catch (error) {
         console.log(error.response);
       }
@@ -37,13 +39,21 @@ const App = () => {
       }
     }
     setUserToken(token);
+    setUserId(id);
   };
 
   useEffect(() => {
     const bootstrapAsync = async () => {
-      const token = await AsyncStorage.getItem("userToken");
-      if (token) {
-        setUserToken(token);
+      // await AsyncStorage.removeItem("userToken");
+      const value = await AsyncStorage.getItem("userToken");
+      let tab = "";
+      if (value) tab = JSON.parse(value);
+
+      // const id = await AsyncStorage.getItem("userid");
+      // if (token && id) {
+      if (tab.length > 0) {
+        setUserToken(tab[0]);
+        setUserId(tab[1]);
       }
 
       setIsLoading(false);
@@ -122,9 +132,50 @@ const App = () => {
                   )}
                 </Tab.Screen>
                 <Tab.Screen
-                  name="TabSettings"
+                  name="TabAroundMe"
                   options={{
-                    tabBarLabel: "Settings",
+                    tabBarLabel: "Around me",
+                    tabBarIcon: ({ size, color }) => (
+                      <FontAwesome
+                        name="map-marker"
+                        size={size}
+                        color={color}
+                      />
+                    ),
+                  }}
+                >
+                  {() => (
+                    <Stack.Navigator>
+                      <Stack.Screen
+                        name="AroundMe"
+                        options={{
+                          headerTitle: () => <LogoComponent />,
+                          headerTitleAlign: "center",
+                        }}
+                      >
+                        {(props) => <AroundMeScreen {...props} />}
+                      </Stack.Screen>
+                      <Stack.Screen
+                        name="RoomAround"
+                        options={{
+                          // headerShown: false,
+                          headerTitleAlign: "center",
+                          headerTitle: () => <LogoComponent />,
+                          headerLeft:
+                            Platform.OS === "ios"
+                              ? () => <HeaderGoBack />
+                              : () => {},
+                        }}
+                      >
+                        {() => <RoomScreen />}
+                      </Stack.Screen>
+                    </Stack.Navigator>
+                  )}
+                </Tab.Screen>
+                <Tab.Screen
+                  name="TabProfile"
+                  options={{
+                    tabBarLabel: "My Profile",
                     tabBarIcon: ({ size, color }) => (
                       <Ionicons
                         name="settings-outline"
@@ -137,13 +188,19 @@ const App = () => {
                   {() => (
                     <Stack.Navigator>
                       <Stack.Screen
-                        name="Settings"
+                        name="Profile"
                         options={{
-                          title: "Settings",
+                          headerTitleAlign: "center",
+                          headerTitle: () => <LogoComponent />,
                         }}
                       >
                         {(props) => (
-                          <SettingsScreen {...props} setToken={setToken} />
+                          <ProfileScreen
+                            {...props}
+                            setToken={setToken}
+                            userToken={userToken}
+                            userId={userId}
+                          />
                         )}
                       </Stack.Screen>
                     </Stack.Navigator>

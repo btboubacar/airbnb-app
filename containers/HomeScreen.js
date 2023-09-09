@@ -67,32 +67,27 @@ export default function HomeScreen() {
                 source={{ uri: item.photos[0].url }}
                 style={styles.offerImg}
               />
-            </TouchableOpacity>
 
-            <View style={styles.infos}>
-              <View style={styles.infosText}>
-                <TouchableOpacity
-                  onPress={() => {
-                    console.log("pressed title");
-                  }}
-                >
+              <View style={styles.infos}>
+                <View style={styles.infosText}>
                   <Text style={styles.title} numberOfLines={1}>
                     {item.title}
                   </Text>
-                </TouchableOpacity>
-                <View style={styles.priceBloc}>
-                  <Text style={styles.price}>{item.price} €</Text>
+
+                  <View style={styles.priceBloc}>
+                    <Text style={styles.price}>{item.price} €</Text>
+                  </View>
+                  <View style={styles.ratings}>
+                    <Stars ratingValue={item.ratingValue} size={20} />
+                    <Text style={styles.review}>{item.reviews} reviews</Text>
+                  </View>
                 </View>
-                <View style={styles.ratings}>
-                  <Stars ratingValue={item.ratingValue} size={20} />
-                  <Text style={styles.review}>{item.reviews} reviews</Text>
-                </View>
+                <Image
+                  source={{ uri: item.user.account.photo.url }}
+                  style={styles.userImg}
+                />
               </View>
-              <Image
-                source={{ uri: item.user.account.photo.url }}
-                style={styles.userImg}
-              />
-            </View>
+            </TouchableOpacity>
           </View>
         )}
         ItemSeparatorComponent={() => <View style={styles.separator}></View>}

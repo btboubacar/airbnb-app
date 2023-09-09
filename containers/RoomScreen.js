@@ -12,6 +12,7 @@ import { useRoute, useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Octicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
+import MapView, { Marker } from "react-native-maps";
 
 // components
 import Stars from "../components/Stars";
@@ -23,8 +24,6 @@ const endpoint = "/rooms";
 
 export default function RoomScreen() {
   const route = useRoute();
-  const navigation = useNavigation();
-  //   console.log(navigation);
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -35,8 +34,7 @@ export default function RoomScreen() {
       try {
         const response = await apiClient.get(`${endpoint}/${route.params.id}`);
 
-        console.log(JSON.stringify(response.data, null, 2));
-
+        // console.log(JSON.stringify(response.data, null, 2));
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -104,6 +102,25 @@ export default function RoomScreen() {
           </TouchableOpacity>
         </View>
       </View>
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: data.location[1],
+          longitude: data.location[0],
+          latitudeDelta: 0.2,
+          longitudeDelta: 0.2,
+        }}
+        showsUserLocation={true}
+      >
+        <Marker
+          coordinate={{
+            latitude: data.location[1],
+            longitude: data.location[0],
+          }}
+          title={data.user.account.username}
+          description={data.title}
+        />
+      </MapView>
     </View>
   );
 }
@@ -188,5 +205,10 @@ const styles = StyleSheet.create({
   moreLess: {
     justifyContent: "center",
     fontSize: 15,
+  },
+
+  map: {
+    width: "100%",
+    height: 400,
   },
 });

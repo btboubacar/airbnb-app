@@ -12,7 +12,7 @@ export default class SwiperComponent extends Component {
       <Swiper
         style={styles.wrapper}
         showsButtons={true}
-        height={500}
+        // height={500}
         buttonWrapperStyle={{ height: "100%", top: 0, position: "absolute" }}
         showsPagination={true}
         paginationStyle={{ top: 200, gap: 15 }}

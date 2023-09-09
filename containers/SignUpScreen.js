@@ -46,7 +46,7 @@ const SignUpScreen = ({ navigation, setToken }) => {
         setIsSubmitting(false);
 
         // set userToken
-        setToken(response.data.token);
+        setToken(response.data.token, response.data.id);
         alert("Account successfully created !");
         console.log(response.data);
         setUsername("");
@@ -275,6 +275,7 @@ const styles = StyleSheet.create({
     height: 120,
     borderColor: "#FFBAC0",
     paddingLeft: 10,
+    textAlignVertical: "top",
   },
   passwordField: {
     flexDirection: "row",
