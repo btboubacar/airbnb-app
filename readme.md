@@ -1,6 +1,10 @@
-# AirBnB mobile app
+<div style= "display: flex; align-items:center; gap: 20px; background-color: black;">
+<img src="./assets/airbnb-logo.jpg" alt="logo" style="max-width: 60px; height: 60px; border-radius: 5px"> <p style="font-size: 40px">Airbnb</p>
+</div>
 
-This is a simplified replica of airbnb mobile app. It includes features such as :
+This is a simplified replica of airbnb mobile app.
+
+## Features
 
 - Sign-in and signup features
 - User image upload from the media library or taking picture via the integrated phone camera
@@ -51,5 +55,3 @@ This is a simplified replica of airbnb mobile app. It includes features such as 
    # ou
    yarn start
    ```
-
-## Features
