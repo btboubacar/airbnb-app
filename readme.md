@@ -1,4 +1,4 @@
-# AirBnB frontend mobile app
+# AirBnB mobile app
 
 This is a simplified replica of airbnb mobile app. It includes features such as :
 
