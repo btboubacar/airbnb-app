@@ -48,12 +48,12 @@ This is a simplified replica of airbnb mobile app.
 3. Install the dependencies:
    ```bash
    npm install
-   # ou
+   # or
    yarn install
    ```
 4. Launch the application :
    ```bash
    npx expo start
-   # ou
+   # or
    yarn start
    ```
