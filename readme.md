@@ -2,6 +2,17 @@
 <img src="./assets/airbnb-logo.jpg" alt="logo" style="max-width: 60px; height: 60px; border-radius: 5px">
 </div>
 
+## Screen captures
+
+<div style="display: flex; justify-content: space-between; gap: 10px; background-color: black;">
+
+<img src="./assets/screen_captures/signin_signup.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
+<img src="./assets/screen_captures/offers.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
+<img src="./assets/screen_captures/around.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
+<img src="./assets/screen_captures/profile.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
+
+</div>
+
  <p style="font-size: 40px">Airbnb</p>
 This is a simplified replica of airbnb mobile app.
 
@@ -19,17 +30,6 @@ This is a simplified replica of airbnb mobile app.
 - React
 - Expo SDK (camera, photos, etc.)
 - mapview (localisation)
-
-## Screen captures
-
-<div style="display: flex; justify-content: space-between; gap: 10px; background-color: black;">
-
-<img src="./assets/screen_captures/signin_signup.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
-<img src="./assets/screen_captures/offers.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
-<img src="./assets/screen_captures/around.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
-<img src="./assets/screen_captures/profile.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
-
-</div>
 
 ## Installation
 
