@@ -1,4 +1,4 @@
-<div style= "display: flex; align-items:center; gap: 20px; ">
+<div style= "display: flex; align-items:center; gap: 20px; flex-direction: row ">
 <img src="./assets/airbnb-logo.jpg" alt="logo" style="max-width: 60px; height: 60px; border-radius: 5px"> <p style="font-size: 40px">Airbnb</p>
 </div>
 
