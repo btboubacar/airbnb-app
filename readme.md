@@ -1,4 +1,4 @@
-<div style= "display: flex; align-items:center; gap: 20px; background-color: black;">
+<div style= "display: flex; align-items:center; gap: 20px; ">
 <img src="./assets/airbnb-logo.jpg" alt="logo" style="max-width: 60px; height: 60px; border-radius: 5px"> <p style="font-size: 40px">Airbnb</p>
 </div>
 
@@ -21,7 +21,7 @@ This is a simplified replica of airbnb mobile app.
 
 ## Screen captures
 
-<div style="display: flex; justify-content: space-between; gap: 10px">
+<div style="display: flex; justify-content: space-between; gap: 10px; background-color: black;">
 
 <img src="./assets/screen_captures/signin_signup.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
 <img src="./assets/screen_captures/offers.gif" alt="Función 2" style="max-width: 400px; height: 400px; border-radius: 10px">
