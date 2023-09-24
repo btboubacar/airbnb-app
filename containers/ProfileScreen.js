@@ -71,6 +71,7 @@ export default function ProfileScreen({ userToken, setToken, userId }) {
         },
       });
 
+      console.log(response.data);
       setUserBody({
         avatar: response.data.photo.url,
       });

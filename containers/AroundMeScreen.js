@@ -78,10 +78,10 @@ const AroundMeScreen = ({ navigation }) => {
     <MapView
       style={styles.map}
       initialRegion={{
-        // latitude: userLocation.latitude,
-        // longitude: userLocation.longitude,
-        latitude: coords.latitude,
-        longitude: coords.longitude,
+        latitude: userLocation.latitude,
+        longitude: userLocation.longitude,
+        // latitude: coords.latitude,
+        // longitude: coords.longitude,
         latitudeDelta: 0.8,
         longitudeDelta: 0.8,
       }}
