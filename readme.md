@@ -1,6 +1,6 @@
-<div style= "display: flex; align-items:center; gap: 20px; flex-direction: row; justify-content: center; ">
+<!-- <div style= "display: flex; align-items:center; gap: 20px; flex-direction: row; justify-content: center; ">
 <img src="./assets/airbnb-logo.jpg" alt="logo" style="max-width: 60px; height: 60px; border-radius: 5px">
-</div>
+</div> -->
 
 ## Screen captures
 
