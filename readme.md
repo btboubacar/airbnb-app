@@ -2,7 +2,7 @@
 <img src="./assets/airbnb-logo.jpg" alt="logo" style="max-width: 60px; height: 60px; border-radius: 5px">
 </div> -->
 
-## Screen captures
+<!-- ## Screen captures -->
 
 <div style="display: flex; justify-content: space-between; gap: 10px; background-color: black;">
 
