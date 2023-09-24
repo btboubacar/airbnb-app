@@ -13,7 +13,8 @@
 
 </div>
 
- <p style="font-size: 40px">Airbnb</p>
+# Airbnb
+
 This is a simplified replica of airbnb mobile app.
 
 ## Features
