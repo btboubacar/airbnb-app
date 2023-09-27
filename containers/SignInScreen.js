@@ -17,7 +17,7 @@ import apiClient from "../api/client";
 
 const endpoint = "/user/log_in";
 
-export default function SignUpScreen({ navigation, setToken }) {
+export default function SignInScreen({ navigation, setToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
