@@ -15,7 +15,7 @@
 
 # Airbnb
 
-This is a simplified replica of airbnb mobile app.
+This is a simplified replica of airbnb mobile app. The TypeScript version of the app is here: https://github.com/btboubacar/airbnb-app-typescript
 
 ## Features
 
