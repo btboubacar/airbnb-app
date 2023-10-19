@@ -49,7 +49,7 @@ This is a simplified replica of airbnb mobile app. The TypeScript version of the
    ```bash
    npm install
    # or
-   yarn install
+   yarn
    ```
 4. Launch the application :
    ```bash
